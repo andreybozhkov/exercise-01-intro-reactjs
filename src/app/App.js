@@ -1,6 +1,22 @@
 import React from 'react';
-//import logo from '../resources/logo.svg';
 import '../style/App.css';
+import ContactList from './contacts.json';
+
+const showContact = contact => (
+  <div class="contact" data-id="id">
+    <span class="avatar small">&#9787;</span>
+    <span class="title">{contact.firstName} {contact.lastName}</span>
+  </div>
+);
+
+const renderContacts = () => {
+  const finalList = [];
+  for (let contact of ContactList) {
+    finalList.push(showContact(contact));
+  }
+
+  return finalList;
+}
 
 const App = (
   <div class="container">
@@ -9,20 +25,7 @@ const App = (
         <div id="list">
           <h1>Contacts</h1>
             <div class="content">
-              <div class="contact" data-id="id">
-                <span class="avatar small">&#9787;</span>
-                <span class="title">Ivan Ivanov</span>
-              </div>
-
-              <div class="contact" data-id="id">
-                <span class="avatar small">&#9787;</span>
-                <span class="title">Jordan Kirov</span>
-              </div>
-
-              <div class="contact" data-id="id">
-                <span class="avatar small">&#9787;</span>
-                <span class="title">Maria Petrova</span>
-              </div>
+              {renderContacts()};
             </div>
         </div>
         <div id="details">
@@ -46,6 +49,6 @@ const App = (
       </div>
     <footer>Contact Book SPA &copy; 2017</footer>
   </div>
-)
+);
 
 export default App;
