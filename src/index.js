@@ -3,5 +3,8 @@ import './style/index.css';
 import App from './app/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(App, document.getElementById('root'));
+ReactDOM.render(App(), document.getElementById('root'));
 registerServiceWorker();
+
+const reRender = ReactDOM.render;
+export default reRender;
